@@ -4,6 +4,7 @@ package com.example.demo.domain.artist.controller;
 import com.example.demo.domain.artist.dto.ArtistInfoResponseDto;
 import com.example.demo.domain.artist.dto.ArtistSaveRequestDto;
 import com.example.demo.domain.artist.service.ArtistService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class ArtistController {
     private final ArtistService artistService;
 
     @PostMapping
-    public ResponseEntity<ArtistInfoResponseDto> saveArtist(@RequestBody ArtistSaveRequestDto artistSaveRequestDto) {
+    public ResponseEntity<ArtistInfoResponseDto> saveArtist(@Valid @RequestBody ArtistSaveRequestDto artistSaveRequestDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(artistService.saveArtist(artistSaveRequestDto));
     }
 

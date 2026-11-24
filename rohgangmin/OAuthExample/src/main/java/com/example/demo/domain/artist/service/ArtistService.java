@@ -4,6 +4,8 @@ import com.example.demo.domain.artist.dto.ArtistInfoResponseDto;
 import com.example.demo.domain.artist.dto.ArtistSaveRequestDto;
 import com.example.demo.domain.artist.entity.Artist;
 import com.example.demo.domain.artist.repository.ArtistRepository;
+import com.example.demo.global.exception.ErrorCode;
+import com.example.demo.global.exception.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,9 +33,9 @@ public class ArtistService {
     @Transactional
     public void deleteArtist(Long artistId) {
         Artist artist = artistRepository.findById(artistId)
-                .orElseThrow(() -> new IllegalArgumentException("요청하신 아티스트 정보를 찾을 수 없습니다."));
+                .orElseThrow(() -> new NotFoundException(ErrorCode.ARTIST_NOT_FOUND));
 
-        artistRepository.deleteById(artistId);
+        artistRepository.delete(artist);
     }
 
     @Transactional(readOnly = true)

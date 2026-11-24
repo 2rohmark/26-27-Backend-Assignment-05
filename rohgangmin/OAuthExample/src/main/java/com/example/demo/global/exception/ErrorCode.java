@@ -32,7 +32,10 @@ public enum ErrorCode {
 
     // Post
     POST_NOT_FOUND("POST_001", HttpStatus.NOT_FOUND, "게시글을 찾을 수 없습니다."),
-    POST_FORBIDDEN("POST_002", HttpStatus.FORBIDDEN, "본인이 작성한 게시글만 삭제할 수 있습니다.");
+    POST_FORBIDDEN("POST_002", HttpStatus.FORBIDDEN, "본인이 작성한 게시글만 삭제할 수 있습니다."),
+
+    // Artist
+    ARTIST_NOT_FOUND("ARTIST_001", HttpStatus.NOT_FOUND, "요청하신 아티스트 정보를 찾을 수 없습니다.");
 
     private final String code;
     private final HttpStatus status;
